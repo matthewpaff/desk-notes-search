@@ -1,0 +1,1 @@
+{"description": "rank a matching personal note using the documented lexical score", "expected": {"results": [{"id": "a0", "matched_terms": ["cat"], "score": 0.5}]}, "id": "retrieval-0000", "input": {"limit": 5, "notes": [{"id": "a0", "text": "cat"}, {"id": "b0", "text": "dog"}], "query": "cat"}}
