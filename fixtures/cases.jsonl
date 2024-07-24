@@ -158,3 +158,4 @@
 {"description": "return no results for an empty query", "expected": {"results": []}, "id": "retrieval-0157", "input": {"limit": 5, "notes": [{"id": "a157", "text": "cat"}], "query": ""}}
 {"description": "reject duplicate personal-note IDs", "expected_error": true, "id": "retrieval-0158", "input": {"limit": 5, "notes": [{"id": "a158", "text": "cat"}, {"id": "a158", "text": "dog"}], "query": "cat"}}
 {"description": "reject boolean retrieval limits", "expected_error": true, "id": "retrieval-0159", "input": {"limit": true, "notes": [], "query": "cat"}}
+{"description": "rank a matching personal note using the documented lexical score", "expected": {"results": [{"id": "a160", "matched_terms": ["cat"], "score": 0.5}]}, "id": "retrieval-0160", "input": {"limit": 5, "notes": [{"id": "a160", "text": "cat"}, {"id": "b160", "text": "dog"}], "query": "cat"}}
