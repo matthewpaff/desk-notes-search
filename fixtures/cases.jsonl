@@ -267,3 +267,4 @@
 {"description": "break equal lexical scores by source ID", "expected": {"results": [{"id": "a266", "matched_terms": ["cat"], "score": 0.333333}, {"id": "b266", "matched_terms": ["cat"], "score": 0.333333}]}, "id": "retrieval-0266", "input": {"limit": 5, "notes": [{"id": "b266", "text": "cat"}, {"id": "a266", "text": "cat"}], "query": "CAT cat"}}
 {"description": "return no results for an empty query", "expected": {"results": []}, "id": "retrieval-0267", "input": {"limit": 5, "notes": [{"id": "a267", "text": "cat"}], "query": ""}}
 {"description": "reject duplicate personal-note IDs", "expected_error": true, "id": "retrieval-0268", "input": {"limit": 5, "notes": [{"id": "a268", "text": "cat"}, {"id": "a268", "text": "dog"}], "query": "cat"}}
+{"description": "reject boolean retrieval limits", "expected_error": true, "id": "retrieval-0269", "input": {"limit": true, "notes": [], "query": "cat"}}
