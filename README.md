@@ -19,7 +19,7 @@ Run from this directory. The optional path defaults to `-`, which reads JSON fro
 stdin. Output is JSON or a fixture-check summary. Exit codes are 0 success,
 1 file failure, and 2 invalid input. Examples and fixtures contain generated data.
 
-Requires query, notes [{id,text}] (up to 200), and limit (1–50). ASCII letters/digits are lowercased into unique term sets. Score is the sum of 1/(document_frequency+1) for matching query terms divided by document unique-term count, rounded to six decimals. Zero matches are omitted and ties sort by ID. This is a documented custom lexical fallback, not embeddings, semantic search, or an LLM.
+Requires query, notes [{id,text}] (up to 200), and limit (1–50). Unicode letters and digits are casefolded into unique term sets; underscores split terms. Score is the sum of 1/(document_frequency+1) for matching query terms divided by document unique-term count, rounded to six decimals. Zero matches are omitted and ties sort by ID. This is a documented custom lexical fallback, not embeddings, semantic search, or an LLM.
 
 ## Learning focus
 
