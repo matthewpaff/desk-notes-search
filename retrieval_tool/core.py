@@ -41,7 +41,9 @@ def evaluate(data):
     import re
     from collections import Counter
     fields(data,("query","notes","limit"))
-    query=set(re.findall(r"[a-z0-9]+",text(data["query"],1000).lower()))
+    def terms(value):
+        return set(re.findall(r"[^\W_]+",value.casefold(),flags=re.UNICODE))
+    query=terms(text(data["query"],1000))
     limit=integer(data["limit"],1,50)
     documents,seen=[],set()
     for note in sequence(data["notes"],200):
@@ -50,7 +52,7 @@ def evaluate(data):
         if ident in seen:
             raise ValueError("Duplicate note ID")
         seen.add(ident)
-        documents.append((ident,set(re.findall(r"[a-z0-9]+",body.lower()))))
+        documents.append((ident,terms(body)))
     frequency=Counter(term for _,terms in documents for term in terms)
     ranked=[]
     for ident,terms in documents:
