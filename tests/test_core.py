@@ -20,5 +20,10 @@ class CoreTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             evaluate({})
 
+    def test_accented_words_are_searchable(self):
+        result=evaluate({'query':'CAFÉ','notes':[{'id':'one','text':'A café visit'},{'id':'two','text':'Coffee visit'}],'limit':5})
+        self.assertEqual([row['id'] for row in result['results']],['one'])
+        self.assertEqual(result['results'][0]['matched_terms'],['café'])
+
 if __name__=="__main__":
     unittest.main()
